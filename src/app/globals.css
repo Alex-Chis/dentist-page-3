@@ -3,78 +3,112 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    /* Custom Palette */
+    --color-teal: 177 91% 41%; /* #0AADA6 */
+    --color-amber: 34 94% 63%; /* #F9B248 */
+    --color-ice-blue: 206 33% 96%; /* #F6F9FB */
+    --color-dark-gray: 0 0% 10%; /* #1A1A1A */
+    --color-medium-gray: 0 0% 33%; /* #555555 */
+
+    /* ShadCN Theme Mapping */
+    --background: 0 0% 100%; /* White */
+    --foreground: var(--color-dark-gray); /* Dark Gray */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: var(--color-dark-gray);
+
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: var(--color-dark-gray);
+
+    --primary: var(--color-teal); /* Teal */
+    --primary-foreground: 0 0% 100%; /* White */
+
+    --secondary: var(--color-ice-blue); /* Ice Blue */
+    --secondary-foreground: var(--color-dark-gray);
+
+    --muted: var(--color-ice-blue); /* Ice Blue for muted background */
+    --muted-foreground: var(--color-medium-gray); /* Medium Gray for muted text */
+
+    --accent: var(--color-amber); /* Amber */
+    --accent-foreground: var(--color-dark-gray); /* Dark Gray on Amber */
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
+
+    --border: 0 0% 85%; /* Lighter Gray for borders */
+    --input: 0 0% 85%; /* Lighter Gray for input borders */
+    --ring: var(--color-teal); /* Teal for focus rings */
+
+    --chart-1: var(--color-teal);
+    --chart-2: var(--color-amber);
+    --chart-3: 197 37% 24%; /* Keep some defaults */
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --radius: 0.5rem; /* Default 8px radius */
+
+    /* Sidebar - Adjust if necessary, keeping theme consistent */
+    --sidebar-background: 0 0% 100%; /* White */
+    --sidebar-foreground: var(--color-medium-gray);
+    --sidebar-primary: var(--color-teal);
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: var(--color-ice-blue);
+    --sidebar-accent-foreground: var(--color-dark-gray);
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: var(--color-teal);
   }
+
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
+    /* Define dark mode colors if needed, mapping similarly */
+    --background: var(--color-dark-gray);
+    --foreground: 0 0% 98%; /* White */
+
+    --card: 0 0% 15%; /* Darker Gray */
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
+
+    --popover: 0 0% 15%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
+
+    --primary: var(--color-teal); /* Teal */
+    --primary-foreground: 0 0% 10%; /* Dark Gray */
+
+    --secondary: 0 0% 20%; /* Slightly lighter gray */
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 63.9%; /* Light Gray */
+
+    --accent: var(--color-amber); /* Amber */
+    --accent-foreground: 0 0% 10%;
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
+
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: var(--color-teal);
+
+    /* Charts - Adjust for dark mode visibility */
+    --chart-1: var(--color-teal);
+    --chart-2: var(--color-amber);
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 15%;
+    --sidebar-foreground: 0 0% 80%;
+    --sidebar-primary: var(--color-teal);
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 0 0% 25%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 25%;
+    --sidebar-ring: var(--color-teal);
   }
 }
 
@@ -84,5 +118,62 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1; /* Enable optional ligatures */
+  }
+  h1, h2, h3, h4, h5, h6 {
+     font-family: var(--font-geist-sans); /* Use Geist Sans for headings */
+     font-weight: 700;
+  }
+  h1 { @apply text-4xl md:text-5xl; } /* 36px, 48px */
+  h2 { @apply text-3xl md:text-4xl; } /* 30px, 36px */
+  h3 { @apply text-2xl md:text-3xl; } /* 24px, 30px */
+  h4 { @apply text-xl md:text-2xl; } /* 20px, 24px */
+
+  p, li, span, label, input, textarea, button, a {
+    @apply text-base leading-relaxed; /* 16px with relaxed line height */
+    font-family: var(--font-geist-sans); /* Use Geist Sans for body too, cleaner than mixing */
+  }
+
+  .text-caption {
+    @apply text-sm leading-snug; /* 14px */
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+  .gradient-overlay {
+     background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+  }
+  .active-link-underline {
+    position: relative;
+  }
+  .active-link-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: hsl(var(--primary));
+      transform: scaleX(1); /* Ensure it's visible */
+      transition: transform 0.3s ease-out;
+  }
+   .nav-link-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: hsl(var(--primary));
+      transform: scaleX(0);
+      transform-origin: bottom left;
+      transition: transform 0.3s ease-out;
+  }
+  .nav-link-underline:hover::after {
+       transform: scaleX(1);
+       transform-origin: bottom left;
   }
 }

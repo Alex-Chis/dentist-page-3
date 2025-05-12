@@ -1,3 +1,4 @@
+
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
@@ -15,6 +16,10 @@ const nextConfig: NextConfig = {
         hostname: 'picsum.photos',
         port: '',
         pathname: '/**',
+      },
+       { // Added picsum.photos for placeholder images
+        protocol: 'https',
+        hostname: 'picsum.photos',
       },
     ],
   },
