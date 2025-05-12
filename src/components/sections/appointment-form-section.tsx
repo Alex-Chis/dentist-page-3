@@ -3,7 +3,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -18,41 +17,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
+// Import the server action and related types from the new file
+import {
+  submitAppointmentRequest,
+  appointmentFormSchema,
+  type AppointmentFormValues
+} from "@/actions/submit-appointment";
 
-// Define a server action placeholder (replace with actual logic)
-async function submitAppointmentRequest(data: AppointmentFormValues): Promise<{ success: boolean; message: string }> {
-  "use server";
-  console.log("Simulating appointment request submission:", data);
-  // Simulate network delay
-  await new Promise(resolve => setTimeout(resolve, 1500));
-
-  // Simulate success/failure
-  // const success = Math.random() > 0.2; // 80% success rate
-  const success = true; // Always succeed for demo
-
-  if (success) {
-    return { success: true, message: "Appointment request submitted successfully! We will contact you shortly." };
-  } else {
-    return { success: false, message: "Failed to submit request. Please try again later or call us." };
-  }
-}
-
-
-const appointmentFormSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  phone: z.string().min(10, {
-    message: "Please enter a valid phone number.",
-  }).regex(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/, { message: "Invalid phone number format."}), // Basic US phone format
-  preferredDate: z.string().optional(), // Optional: Could use date picker and refine validation
-  message: z.string().max(500, { message: "Message cannot exceed 500 characters." }).optional(),
-});
-
-type AppointmentFormValues = z.infer<typeof appointmentFormSchema>;
 
 // Default values
 const defaultValues: Partial<AppointmentFormValues> = {
@@ -76,6 +47,7 @@ export function AppointmentFormSection() {
   async function onSubmit(data: AppointmentFormValues) {
     setIsSubmitting(true);
     try {
+      // Call the imported server action
       const result = await submitAppointmentRequest(data);
       if (result.success) {
          toast({
