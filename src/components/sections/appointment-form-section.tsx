@@ -17,12 +17,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
-// Import the server action and related types from the new file
-import {
-  submitAppointmentRequest,
-  appointmentFormSchema,
-  type AppointmentFormValues
-} from "@/actions/submit-appointment";
+// Import the server action
+import { submitAppointmentRequest } from "@/actions/submit-appointment";
+// Import the schema and type from the new schema file
+import { appointmentFormSchema, type AppointmentFormValues } from "@/lib/schemas/appointment";
 
 
 // Default values

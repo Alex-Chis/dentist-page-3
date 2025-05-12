@@ -2,15 +2,35 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { CheckCircle, Tooth, Bone, TestTubeDiagonal } from 'lucide-react'; // Example icons
+import { CheckCircle, Bone, TestTubeDiagonal } from 'lucide-react'; // Example icons
 import { AppointmentFormSection } from "@/components/sections/appointment-form-section"; // Reuse form section
+
+// Inline SVG for Tooth icon
+const ToothIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M9.34 2.404a1.5 1.5 0 0 1 2.715.086l.513 2.563a1.5 1.5 0 0 0 1.414 1.13h0a1.5 1.5 0 0 1 1.492 1.85L14.5 12.5a1.5 1.5 0 0 1-1.492 1.85h0a1.5 1.5 0 0 0-1.414 1.13l-.513 2.563a1.5 1.5 0 0 1-2.715.086L7.16 14.53a1.5 1.5 0 0 0-1.414-1.13h0A1.5 1.5 0 0 1 4.254 11.55L5.22 7.03A1.5 1.5 0 0 1 6.712 5.18h0a1.5 1.5 0 0 0 1.414-1.13Z" />
+    <path d="M16 4a1.5 1.5 0 0 1 1.512 1.845l-.589 3.517a1.5 1.5 0 0 0 0 1.276l.589 3.517A1.5 1.5 0 0 1 16 16" />
+    <path d="M18 6a1.5 1.5 0 0 1 1.574 1.772l-.432 2.568a1.5 1.5 0 0 0 0 1.32l.432 2.568A1.5 1.5 0 0 1 18 14" />
+  </svg>
+);
 
 const services = [
   {
     id: 'cleaning',
     title: "Dental Cleaning & Checkups",
     description: "Routine cleanings and comprehensive exams to maintain oral health and prevent future issues.",
-    icon: Tooth,
+    icon: ToothIcon,
     points: ["Plaque & tartar removal", "Polishing", "Oral cancer screening", "Personalized hygiene advice"],
     data_ai_hint: "dental tools clean"
   },
@@ -42,7 +62,7 @@ const services = [
     id: 'fillings',
     title: "Fillings & Restorations",
     description: "Repairing cavities and damaged teeth with durable, tooth-colored materials.",
-    icon: Tooth, // Reusing Tooth
+    icon: ToothIcon, // Reusing ToothIcon
     points: ["Treats decay", "Restores tooth structure", "Composite (white) fillings", "Crowns & bridges"],
     data_ai_hint: "dental filling procedure"
   },
@@ -50,7 +70,7 @@ const services = [
     id: 'rootcanal',
     title: "Root Canal Therapy",
     description: "Saving infected or severely damaged teeth by treating the inner pulp.",
-    icon: Tooth, // Reusing Tooth
+    icon: ToothIcon, // Reusing ToothIcon
     points: ["Relieves severe pain", "Saves natural teeth", "Prevents abscess formation", "Comfortable procedure"],
     data_ai_hint: "tooth root canal"
   },

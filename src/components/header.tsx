@@ -2,12 +2,33 @@
 "use client";
 
 import Link from 'next/link';
-import { Phone, Tooth, Menu, X } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { cn } from '@/lib/utils';
+
+// Inline SVG for Tooth icon
+const ToothIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M9.34 2.404a1.5 1.5 0 0 1 2.715.086l.513 2.563a1.5 1.5 0 0 0 1.414 1.13h0a1.5 1.5 0 0 1 1.492 1.85L14.5 12.5a1.5 1.5 0 0 1-1.492 1.85h0a1.5 1.5 0 0 0-1.414 1.13l-.513 2.563a1.5 1.5 0 0 1-2.715.086L7.16 14.53a1.5 1.5 0 0 0-1.414-1.13h0A1.5 1.5 0 0 1 4.254 11.55L5.22 7.03A1.5 1.5 0 0 1 6.712 5.18h0a1.5 1.5 0 0 0 1.414-1.13Z" />
+    <path d="M16 4a1.5 1.5 0 0 1 1.512 1.845l-.589 3.517a1.5 1.5 0 0 0 0 1.276l.589 3.517A1.5 1.5 0 0 1 16 16" />
+    <path d="M18 6a1.5 1.5 0 0 1 1.574 1.772l-.432 2.568a1.5 1.5 0 0 0 0 1.32l.432 2.568A1.5 1.5 0 0 1 18 14" />
+  </svg>
+);
+
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -39,7 +60,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full bg-background shadow-md">
       <div className="container mx-auto flex h-20 max-w-6xl items-center justify-between px-4 md:px-8">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold text-primary">
-          <Tooth className="h-6 w-6" />
+          <ToothIcon className="h-6 w-6" />
           <span>Smile Hub</span>
         </Link>
 
@@ -51,7 +72,7 @@ export function Header() {
              href={link.href}
              className={cn(
                'relative text-foreground hover:text-primary transition-colors nav-link-underline py-2 text-base font-medium',
-               pathname === href && 'active-link-underline text-primary'
+               pathname === link.href && 'active-link-underline text-primary'
              )}
            >
              {link.label}
@@ -82,7 +103,7 @@ export function Header() {
                 <div className="flex flex-col h-full p-6">
                    <div className="mb-8 flex justify-between items-center">
                     <Link href="/" className="flex items-center gap-2 text-xl font-bold text-primary">
-                      <Tooth className="h-6 w-6" />
+                      <ToothIcon className="h-6 w-6" />
                       <span>Smile Hub</span>
                     </Link>
                      <SheetClose asChild>

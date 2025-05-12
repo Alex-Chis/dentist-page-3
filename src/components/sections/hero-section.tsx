@@ -20,11 +20,11 @@ export function HeroSection() {
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60 -z-10" />
 
-      <div className="container mx-auto max-w-3xl px-4 z-10">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-shadow animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+      <div className="container mx-auto max-w-4xl px-4 z-10"> {/* Changed max-w-3xl to max-w-4xl */}
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-shadow animate-fade-in-up" style={{ animationDelay: '0.2s' }}> {/* Changed text size and mb */}
           Welcome to Smile Hub
         </h1>
-        <p className="text-xl md:text-2xl mb-8 text-shadow animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+        <p className="text-xl md:text-2xl mb-10 text-shadow animate-fade-in-up" style={{ animationDelay: '0.4s' }}> {/* Increased mb */}
           Your smile, our care. Providing exceptional dental services in a comfortable environment.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
@@ -38,30 +38,4 @@ export function HeroSection() {
       </div>
     </section>
   );
-}
-
-// Add basic keyframes for animations if not using a library
-const animationStyles = `
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-    opacity: 0; /* Start hidden */
-  }
-`;
-
-// Inject styles (consider placing in globals.css or layout if preferred)
-if (typeof window !== 'undefined') {
-  const styleSheet = document.createElement("style")
-  styleSheet.type = "text/css"
-  styleSheet.innerText = animationStyles
-  document.head.appendChild(styleSheet)
 }

@@ -1,29 +1,19 @@
 
 'use server';
 
-import * as z from "zod";
-
-// Define the schema and type here as well, so it's self-contained
-export const appointmentFormSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  phone: z.string().min(10, {
-    message: "Please enter a valid phone number.",
-  }).regex(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/, { message: "Invalid phone number format."}), // Basic US phone format
-  preferredDate: z.string().optional(), // Optional: Could use date picker and refine validation
-  message: z.string().max(500, { message: "Message cannot exceed 500 characters." }).optional(),
-});
-
-export type AppointmentFormValues = z.infer<typeof appointmentFormSchema>;
+// Import the schema and type from the dedicated schema file
+import { type AppointmentFormValues, appointmentFormSchema } from "@/lib/schemas/appointment";
 
 
 // Define a server action placeholder (replace with actual logic)
 export async function submitAppointmentRequest(data: AppointmentFormValues): Promise<{ success: boolean; message: string }> {
-  console.log("Simulating appointment request submission:", data);
+  // Validate data against the schema on the server-side as well
+   const validation = appointmentFormSchema.safeParse(data);
+   if (!validation.success) {
+       return { success: false, message: "Invalid data submitted." };
+   }
+
+  console.log("Simulating appointment request submission:", validation.data);
   // Simulate network delay
   await new Promise(resolve => setTimeout(resolve, 1500));
 
